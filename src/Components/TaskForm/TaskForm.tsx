@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import type { TaskFormValues } from '../../types/task'
@@ -26,11 +26,15 @@ export function TaskForm({ defaultValues, onSubmit, submitText, isLoading = fals
     },
   })
 
+  const hasReset = useRef(false)
+
   useEffect(() => {
-    if (defaultValues) {
-      reset(defaultValues)
-    }
-  }, [defaultValues, reset])
+  if (defaultValues && !hasReset.current) {
+    reset(defaultValues)
+    hasReset.current = true
+  }
+}, [defaultValues, reset])
+
 
   return (
     <form className="task-form" onSubmit={handleSubmit(onSubmit)}>
