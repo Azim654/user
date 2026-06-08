@@ -1,0 +1,48 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.modal {
+  width: min(560px, 100%);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--card);
+  box-shadow: var(--shadow-lg);
+  padding: 24px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+
+    h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    button {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--bg-soft);
+      color: var(--text);
+      font-size: 28px;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background: var(--danger-soft);
+        color: var(--danger);
+      }
+    }
+  }
+}

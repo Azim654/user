@@ -1,0 +1,23 @@
+{
+  "tasks": [
+    {
+      "title": "ррррр",
+      "description": "ооооооооо",
+      "completed": false,
+      "deleted": false,
+      "createdAt": "2026-06-07T16:54:10.501Z",
+      "updatedAt": "2026-06-07T16:57:53.312Z",
+      "id": "H6WlLU_FGw0"
+    },
+    {
+      "title": "ырыры",
+      "description": "",
+      "completed": false,
+      "deleted": true,
+      "createdAt": "2026-06-07T16:54:20.394Z",
+      "updatedAt": "2026-06-07T17:02:21.156Z",
+      "id": "-PwXXEkrYTo"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

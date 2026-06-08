@@ -1,0 +1,27 @@
+.edit-page {
+  padding: 34px 0 54px;
+}
+
+.edit-card {
+  max-width: 720px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 34px;
+  background: var(--card);
+  padding: clamp(22px, 5vw, 38px);
+  box-shadow: var(--shadow-lg);
+
+  h1 {
+    margin: 8px 0 26px;
+    color: var(--text);
+    font-size: clamp(30px, 6vw, 48px);
+  }
+}
+
+.back-link {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--primary);
+  font-weight: 900;
+  text-decoration: none;
+}
