@@ -68,3 +68,5 @@ export function Settings() {
     </AppContainer>
   )
 }
+
+export default Settings

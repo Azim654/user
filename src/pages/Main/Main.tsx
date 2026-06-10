@@ -12,3 +12,5 @@ export function Main() {
     </AppContainer>
   )
 }
+
+export default Main

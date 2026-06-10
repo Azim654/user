@@ -52,3 +52,5 @@ export function EditTask() {
     </AppContainer>
   )
 }
+
+export default EditTask

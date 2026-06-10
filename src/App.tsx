@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { routes } from './Routes/routes'
@@ -19,7 +19,10 @@ function App() {
     i18n.changeLanguage(language)
   }, [language, i18n])
 
-  return <RouterProvider router={routes} />
+  return ( 
+  <Suspense fallback={<div>{i18n.t('loading')}</div>}>
+    <RouterProvider router={routes}/>
+  </Suspense>)
 }
 
 export default App

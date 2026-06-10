@@ -11,3 +11,5 @@ export function Completed() {
     </AppContainer>
   )
 }
+
+export default Completed

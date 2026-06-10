@@ -1,12 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { Main } from '../pages/Main/Main'
-import { Active } from '../pages/Active/Active'
-import { Completed } from '../pages/Completed/Completed'
-import { Can } from '../pages/Can/Can'
-import { Settings } from '../pages/Settings/Settings'
-import { EditTask } from '../pages/EditTask/EditTask'
-import Layout from '../layout/Layout'
 import { ROUTER_PATHS } from './routerPaths'
+import { lazy } from 'react'
+
+const Layout = lazy(() => import('../layout/Layout'))
+const Main = lazy(() => import('../pages/Main/Main'))
+const Active = lazy(() => import('../pages/Active/Active'))
+const Completed = lazy(() => import('../pages/Completed/Completed'))
+const Can = lazy(() => import('../pages/Can/Can'))
+const Settings = lazy(() => import('../pages/Settings/Settings'))
+const EditTask = lazy(() => import('../pages/EditTask/EditTask'))
 
 export const routes = createBrowserRouter([
   {

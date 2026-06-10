@@ -11,3 +11,5 @@ export function Can() {
     </AppContainer>
   )
 }
+
+export default Can

@@ -11,3 +11,5 @@ export function Active() {
     </AppContainer>
   )
 }
+
+export default Active
