@@ -4,6 +4,7 @@ import { useUiStore } from '../../store/useUiStore'
 import { TaskForm } from '../TaskForm/TaskForm'
 import type { TaskFormValues } from '../../types/task'
 import './modal.scss'
+import Modal from '.'
 
 export function CreateTaskModal() {
   const { t } = useTranslation()
@@ -20,22 +21,13 @@ export function CreateTaskModal() {
   }
 
   return (
-    <div className="modal-backdrop" onMouseDown={close}>
-      <div className="modal" onMouseDown={(event) => event.stopPropagation()}>
-        <div className="modal__header">
-          <h2>{t('createTask')}</h2>
-          <button type="button" onClick={close}>
-            ×
-          </button>
-        </div>
-
-        <TaskForm
-          onSubmit={handleSubmit}
-          submitText={t('createTask')}
-          isLoading={createTask.isPending}
-          onCancel={close}
-        />
-      </div>
-    </div>
+      <Modal title={t('createTask')} onClose={close}>
+      <TaskForm
+        onSubmit={handleSubmit}
+        submitText={t('createTask')}
+        isLoading={createTask.isPending}
+        onCancel={close}
+      />
+    </Modal>
   )
 }

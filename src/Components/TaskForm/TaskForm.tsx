@@ -1,75 +1,64 @@
-import { useEffect, useRef } from 'react'
-import { useForm, type SubmitHandler } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { FormField, TextareaField } from '../Formfield'
 import type { TaskFormValues } from '../../types/task'
 import './taskForm.scss'
 
 type TaskFormProps = {
-  defaultValues?: TaskFormValues
-  onSubmit: SubmitHandler<TaskFormValues>
-  submitText?: string
+  onSubmit: (values: TaskFormValues) => void
+  submitText: string
   isLoading?: boolean
   onCancel?: () => void
+  defaultValues?: TaskFormValues
 }
 
-export function TaskForm({ defaultValues, onSubmit, submitText, isLoading = false, onCancel }: TaskFormProps) {
+export function TaskForm({
+  onSubmit,
+  submitText,
+  isLoading = false,
+  onCancel,
+  defaultValues,
+}: TaskFormProps) {
   const { t } = useTranslation()
+
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<TaskFormValues>({
-    defaultValues: defaultValues || {
-      title: '',
-      description: '',
-    },
+    defaultValues,
   })
-
-  const hasReset = useRef(false)
-
-  useEffect(() => {
-  if (defaultValues && !hasReset.current) {
-    reset(defaultValues)
-    hasReset.current = true
-  }
-}, [defaultValues, reset])
-
 
   return (
     <form className="task-form" onSubmit={handleSubmit(onSubmit)}>
-      <label>
-        <span>{t('title')}</span>
-        <input
-          type="text"
-          placeholder={t('titlePlaceholder')}
-          {...register('title', {
-            required: t('titleRequired'),
-            minLength: {
-              value: 2,
-              message: t('minTitle'),
-            },
-          })}
-        />
-        {errors.title && <small>{errors.title.message}</small>}
-      </label>
+      <FormField
+        label={t('title')}
+        placeholder={t('titlePlaceholder')}
+        registration={register('title', {
+          required: t('titleRequired'),
+          minLength: {
+            value: 2,
+            message: t('minTitle'),
+          },
+        })}
+        error={errors.title}
+      />
 
-      <label>
-        <span>{t('description')}</span>
-        <textarea
-          placeholder={t('descriptionPlaceholder')}
-          {...register('description')}
-        />
-      </label>
+      <TextareaField
+        label={t('description')}
+        placeholder={t('descriptionPlaceholder')}
+        registration={register('description')}
+      />
 
-      <div className="task-form__actions">
+      <div className="form-actions">
         {onCancel && (
-          <button className="secondary-button" type="button" onClick={onCancel}>
+          <button type="button" onClick={onCancel}>
             {t('cancel')}
           </button>
         )}
-        <button className="primary-button" type="submit" disabled={isLoading}>
-          {isLoading ? t('loading') : submitText || t('save')}
+
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? t('loading') : submitText}
         </button>
       </div>
     </form>

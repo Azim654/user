@@ -66,7 +66,7 @@ const resources = {
       cancel: 'Cancel',
       title: 'Title',
       description: 'Description',
-      titlePlaceholder: 'For example: Learn Zustand',
+      titlePlaceholder: 'Task title',
       descriptionPlaceholder: 'Short task description',
       allTasks: 'All tasks',
       activeTasks: 'Active tasks',

@@ -3,8 +3,10 @@ import { useTranslation } from 'react-i18next'
 import { useTasks } from '../../hooks/useTasks'
 import { useUiStore } from '../../store/useUiStore'
 import { Task } from '../Task/Task'
-import type { SortType, TaskFilter } from '../../types/task'
+import type { TaskFilter } from '../../types/task'
 import './taskList.scss'
+import Sort from '../Sort'
+import { CreateTaskModal } from '../Modal/CreateTaskModal'
 
 type TaskListProps = {
   filter?: TaskFilter
@@ -16,8 +18,6 @@ export function TaskList({ filter = 'all', title }: TaskListProps) {
   const { data = [], isLoading, isError } = useTasks()
   const sort = useUiStore((state) => state.sort)
   const search = useUiStore((state) => state.search)
-  const setSort = useUiStore((state) => state.setSort)
-  const setSearch = useUiStore((state) => state.setSearch)
   const openCreateModal = useUiStore((state) => state.openCreateModal)
 
   const stats = useMemo(() => {
@@ -73,19 +73,9 @@ export function TaskList({ filter = 'all', title }: TaskListProps) {
         <div><b>{stats.trash}</b><span>{t('statsTrash')}</span></div>
       </div>
 
-      <div className="toolbar">
-        <input
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-          placeholder={t('search')}
-        />
+      <Sort />
 
-        <select value={sort} onChange={(event) => setSort(event.target.value as SortType)}>
-          <option value="new">{t('sortNew')}</option>
-          <option value="old">{t('sortOld')}</option>
-          <option value="alphabet">{t('sortAlphabet')}</option>
-        </select>
-      </div>
+      <CreateTaskModal />
 
       {tasks.length === 0 ? (
         <p className="state-text">{t('empty')}</p>

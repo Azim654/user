@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { ROUTER_PATHS } from '../../Routes/routerPaths'
 import { useUiStore } from '../../store/useUiStore'
 import './header.scss'
+import { CreateTaskModal } from '../Modal/CreateTaskModal'
 
 export function Header() {
   const { t } = useTranslation()
@@ -36,6 +37,7 @@ export function Header() {
         <button className="primary-button" type="button" onClick={openCreateModal}>
           + {t('createTask')}
         </button>
+        <CreateTaskModal />
       </div>
     </header>
   )
